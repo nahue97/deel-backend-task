@@ -39,6 +39,8 @@ const getBestProfession = async (req, res) => {
         ]
     });
 
+    if (paidJobsForPeriod.length == 0) return res.status(404).end('No paid jobs performed in that period of time');
+
     const earnedMoneyPerProfession = paidJobsForPeriod.reduce((result, job) => {
         const profession = job.Contract.Contractor.profession;
         if (typeof result[profession] == 'undefined') {
