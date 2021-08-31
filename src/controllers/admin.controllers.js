@@ -97,7 +97,6 @@ const getBestClients = async (req, res) => {
     });
 
     const paidPerClient = paidJobsForPeriod.map(function (x) {
-        console.log(x)
         return {
             id: x.Contract.ClientId,
             fullName: x.Contract.Client.firstName + ' ' + x.Contract.Client.lastName,

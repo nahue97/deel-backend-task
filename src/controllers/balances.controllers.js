@@ -1,5 +1,4 @@
 const depositById = async (req, res) => {
-    const { sequelize } = require('../model');
     const { Profile, Job, Contract } = req.app.get('models');
     const { userId } = req.params;
     const { quantity } = req.body;
