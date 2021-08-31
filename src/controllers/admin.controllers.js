@@ -8,7 +8,7 @@ const getBestProfession = async (req, res) => {
 
     if (startDate == 'Invalid Date' || endDate == 'Invalid Date') return res.status(500).end('Start and end must be valid dates specified in YYYY-MM-DD format');
 
-    // I assume that a job was performed in the specified period if its createdAt or updatedAt values are inside the period
+    // I assume that a job was performed in the specified period if its createdAt is inside the period
     const paidJobsForPeriod = await Job.findAll({
         where: {
             paid: true,
@@ -38,8 +38,6 @@ const getBestProfession = async (req, res) => {
             }
         ]
     });
-
-    res.json(paidJobsForPeriod);
 
     const earnedMoneyPerProfession = paidJobsForPeriod.reduce((result, job) => {
         const profession = job.Contract.Contractor.profession;
